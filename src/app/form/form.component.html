@@ -1,0 +1,89 @@
+<div>
+  <form class="p-3 pt-4 main-f">
+    <div class="mb-3">
+      <label for="payee-name-i" class="form-label">Payee Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="payee-name-i"
+        (input)="onNameChange($event)"
+      />
+    </div>
+    <div class="mb-2">
+      <label for="date-i" class="form-label">Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="date-i"
+        (input)="onDateChange($event)"
+      />
+    </div>
+
+    <div class="mb-2">
+      <label for="date-i" class="form-label">Convert Pipe</label>
+      <input
+        type="string"
+        class="form-control"
+        id="date-i"
+        (input)="onConvertChange($event)"
+      />
+    </div>
+
+    <div class="mb-2">
+      <label for="amount-i" class="form-label">Currency</label>
+      <input
+        type="number"
+        class="form-control"
+        id="amount-i"
+        (input)="onAmountChange($event)"
+      />
+    </div>
+  </form>
+
+  <form class="p-3 pt-4 border-top bg-light">
+    <fieldset disabled>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="payee-name-i"
+          [value]="name | titlecase"
+        />
+      </div>
+    </fieldset>
+    <fieldset disabled>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="payee-name-i"
+          [value]="userDate | date"
+        />
+      </div>
+    </fieldset>
+    <fieldset disabled>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="convert-name-i"
+          [value]="
+            convertedValue == null || convertedValue == ''
+              ? ''
+              : (convertedValue | convert: 'as')
+          "
+        />
+      </div>
+    </fieldset>
+    <fieldset disabled>
+      <div class="mb-2">
+        <input
+          type="text"
+          class="form-control"
+          id="num-name-i"
+          [value]="amount | currency: 'JPY'"
+        />
+      </div>
+    </fieldset>
+  </form>
+</div>
